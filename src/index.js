@@ -1,15 +1,15 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-const Manager = require('./lib\manager.html');
-const Engineer = require('./lib\engineer.html');
-const Intern = require('./lib\intern.html');
-const { type } = require('node:os');
+const Manager = require('../lib/manager.js');
+const Engineer = require('../lib/engineer.js');
+const Intern = require('../lib/intern.js');
+
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptManager = () => {
-    return inquirer.promt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -31,7 +31,7 @@ const promptManager = () => {
         },
         {
             type: 'input',
-            name: 'office number',
+            name: 'officeNumber',
             message: 'Manager Office Number',
             validate: function(value) {
                 var valid = !isNaN(parseFloat(value));
@@ -112,7 +112,7 @@ const promptIntern = () => {
     ]);
 };
 
-const promptUser = () => {
+/*const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -135,7 +135,7 @@ const promptUser = () => {
             message: 'What role will the employee be performing?',
         },
     ]);
-};
+};*/
 
 const team = [];
 
